@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice files</title>
+  </head>
+  <body>
+    <button
+      onclick="
+        const hour = '6';
+
+        const name = 'Nani';
+
+        if (hour >= 6 && hour < 12) {
+          wish = `Good Morning ${name}`;
+        } else if (hour >= 12 && hour < 18) {
+          wish = `Good Afternoon ${name}`;
+        } else if (hour >= 18 && hour < 24) {
+          wish = `Good Night ${name}`;
+        }
+
+        console.log(wish);
+      "
+    >
+      6 to 12
+    </button>
+    <button>12 to 18</button>
+    <button>18 to 24</button>
+    <br /><br />
+    <button
+      onclick="
+        let age = ' 5';
+
+        const isHoliday = true;
+
+        if ((age <= 6 || age >= 65) && !isHoliday) {
+          console.log('You have discount');
+        } else {
+          console.log(`Sorry you don't have discount`);
+        }
+      "
+    >
+      Check if the person have discount or not
+    </button>
+
+    <div>
+      <button
+        style="margin-top: 20px"
+        onclick="
+          const number = Math.random();
+
+          let result = '';
+          if (number >= 0 && number <= 0.5) {
+            result = 'Heads';
+          } else if (number >= 0.5 && number < 1) {
+            result = 'Tails';
+          }
+
+          const guess = 'Tails';
+
+          if (guess === result) {
+            output = 'yes you are correct';
+          } else {
+            output = 'No you are wrong';
+          }
+
+          alert(`It's ${result}, and ${output}`);
+        "
+      >
+        Heads/Tails
+      </button>
+    </div>
+  </body>
+
+  <script>
+    // const hour = "18";
+
+    // const name = "Nani";
+
+    // if (hour >= 6 && hour < 12) {
+    //   wish = `Good Morning ${name}`;
+    // } else if (hour >= 12 && hour < 18) {
+    //   wish = `Good Afternoon ${name}`;
+    // } else if (hour >= 18 && hour < 24) {
+    //   wish = `Good Night ${name}`;
+    // }
+
+    // console.log(wish);
+  </script>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AddEventListener</title>
+  </head>
+  <body>
+    <button class="js-click-btn">Click Me</button>
+    <button onclick="hello()" class="js-hello-btn">Hello</button>
+    <button class="js-span-btn">Span</button>
+    <p class="span-dummy"></p>
+
+    <script>
+      function hello() {
+        const helloElement = document.querySelector(".js-hello-btn");
+        if (helloElement.textContent === "Hello") {
+          helloElement.textContent = "How r u dng";
+        } else {
+          helloElement.textContent = "Hello";
+        }
+      }
+
+      const buttonElement = document.querySelector(".js-click-btn");
+
+      buttonElement.addEventListener("click", () => {
+        if (buttonElement.textContent === "Click Me") {
+          buttonElement.textContent = "Clicked";
+        } else {
+          buttonElement.textContent = "Click Me";
+        }
+      });
+
+      const spanElement = document.querySelector(".js-span-btn");
+
+      spanElement.addEventListener("click", () => {
+        setTimeout(() => {
+          document.querySelector(".span-dummy").innerHTML =
+            "Yes you clicked span button";
+        }, 3000);
+      });
+
+
+
+      function bankAccount(initialBalance){
+
+        let balance = initialBalance;
+
+        function deposit(amount){
+          balance = balance + amount;
+          return 'Total balance is :' + balance;
+
+        }
+        function withdrawMoney(amount){
+          if(balance < amount){
+            return 'Insufficient balance';
+          }else{
+            balance = balance - amount;
+            return 'Your balance is :' + balance;
+          }
+
+        }
+        return{
+          deposit : deposit,
+          withdrawMoney : withdrawMoney
+        }
+
+      }let user = bankAccount(1000);
+      console.log(user.deposit(500));
+      console.log(user.withdrawMoney(1500));
+    </script>
+  </body>
+</html>

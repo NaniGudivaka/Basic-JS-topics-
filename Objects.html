@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>objects</title>
+</head>
+<body>
+  <script>
+
+const product = {
+  name:'basketball',
+  cost:'2095cents',
+  'delivery-date':'3days',
+ 
+};
+const {name,cost} = product;
+console.log(product.name);
+console.log(product.cost);
+console.log(product['delivery-date']);
+
+
+console.log(product);
+
+
+
+
+  const product1 ={
+    name1:'shirts',
+    price1: '205'
+  };
+ 
+ const product2 = {
+  name2:'pants',
+  price2:'34'
+ };
+function comparePrice(){
+ if(product1.price1 > product2.price2){
+
+  return product1 ;
+
+ }else{
+  return product2;
+
+ }
+ 
+}console.log(comparePrice());
+
+
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    <title>Bank Balance</title>
+   
+    <style>
+     
+      .text-btn {
+        background-color: blue;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        padding: 10px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+      }
+      .text-btn:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+      }
+      .text-btn :hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+        transform: scale(1.1);
+      }
+      .changed {
+        background-color: lightblue;
+        color: black;
+        box-shadow: 0 0 15px rgba(40, 167, 69, 0.6);
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Simple balance check program</h2>
+    <p class="js-deposit"></p>
+    <p class="js-withdraw"></p>
+    <button class="text-btn-js text-btn">
+      Changes the text if click double tap
+    </button>
+
+    <script>
+      function checkBankBalance(initialBalance) {
+        let balance = initialBalance;
+
+        function deposit(amount) {
+          balance = balance + amount;
+          return "Total amount :" + balance;
+        }
+        function withdrawMoney(amount) {
+          if (balance < amount) {
+            return "Insufficient funds";
+          } else {
+            balance = balance - amount;
+            return "Remaining balance is :" + balance;
+          }
+        }
+        return {
+          deposit: deposit,
+          withdrawMoney: withdrawMoney,
+        };
+      }
+      let output = checkBankBalance(10000);
+      let money = output.deposit(500);
+      document.querySelector(".js-deposit").innerHTML = money;
+
+      let withdraw = output.withdrawMoney(2000);
+
+      document.querySelector(".js-withdraw").innerHTML = withdraw;
+
+      const btnElement = document.querySelector(".text-btn-js");
+
+      btnElement.addEventListener("dblclick", () => {
+        if (btnElement.textContent === "Changes the text if click double tap") {
+          btnElement.textContent =
+            "Yes the text is changed, when you double click";
+
+          btnElement.disabled = true;
+        }
+      });
+
+      const cart = ["p1", "p2", "p3", "p4"];
+      console.log(typeof cart);
+      const converted = JSON.stringify(cart);
+      console.log(converted);
+      console.log(typeof converted);
+    </script>
+  </body>
+</html>

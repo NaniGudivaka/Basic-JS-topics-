@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H & T</title>
+</head>
+<body>
+  <button class="js-heads-btn" onclick="headsElement()">Heads</button>
+  <button class="js-tails-btn" onclick="tailsElement()">Tails</button>
+  <p class="js-final-selection"></p>
+
+  <input type="text" placeholder="Enter u r name" class="js-input-text" onkeydown="
+  keyDown();
+  ">
+  <button class="js-submit-btn" onclick="
+
+  submitElement();
+  
+  
+  ">Submit</button>
+  <p class="js-final-text"></p>
+
+
+  <script>
+      function keyDown(){
+        if(event.key === 'Enter'){
+
+          submitElement();
+
+        }
+      }
+    
+    function submitElement(){
+      const dataType = document.querySelector('.js-input-text');
+
+      let display = dataType.value;
+      document.querySelector('.js-final-text').innerHTML = `Your Name is : ${display}`;
+    }
+
+
+    function headsElement(){
+     const heads = document.querySelector('.js-heads-btn');
+     document.querySelector('.js-final-selection').innerHTML = 'You clicked : heads';
+
+    
+    }
+     
+
+
+    function tailsElement(){
+      const tails = document.querySelector('.js-tails-btn');
+      document.querySelector('.js-final-selection').innerHTML = 'You clicked : tails';
+    }
+
+  </script>
+  
+</body>
+</html>

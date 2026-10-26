@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+body{
+  font-family: Arial;
+  margin-top:150px;
+  text-align:center;
+  background-color: lightblue;
+}
+
+.name{
+  font-size:40px;
+  font-weight:bold;
+}
+
+.role{
+  font-size:50px;
+}
+
+.static{
+  color:black;
+  font-weight: bold;
+}
+
+.word{
+  display:inline-block;
+  min-width:440px; /* fixed area for changing text */
+  text-align:left;
+}
+
+.word span{
+  font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="name">
+  Hey this is Nani Gudivaka
+</div>
+
+<div class="role">
+  <span class="static">I am </span>
+  <span class="word"></span>
+</div>
+
+<script>
+
+const roles = [
+  "Web Developer",
+  "React Developer",
+  "Frontend Developer",
+  "JavaScript Developer"
+];
+
+const colors = [
+  "#ff4d4d",
+  "#00bfff",
+  "#28a745",
+  "#ff9900",
+  "#8a2be2",
+  "#ff1493"
+];
+
+const word = document.querySelector('.word');
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function colorLetters(text){
+  let result = "";
+
+  for(let i=0;i<text.length;i++){
+    const color = colors[i % colors.length];
+    result += `<span style="color:${color}">${text[i]}</span>`;
+  }
+
+  return result;
+}
+
+function animate(){
+
+  const currentRole = roles[roleIndex];
+
+  if(!deleting){
+    charIndex++;
+  }else{
+    charIndex--;
+  }
+
+  const text = currentRole.substring(0,charIndex);
+  word.innerHTML = colorLetters(text);
+
+  if(!deleting && charIndex === currentRole.length){
+    deleting = true;
+    setTimeout(animate,1000);
+    return;
+  }
+
+  if(deleting && charIndex === 0){
+    deleting = false;
+    roleIndex = (roleIndex + 1) % roles.length;
+  }
+
+  setTimeout(animate,100);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>

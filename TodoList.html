@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dummy ToDo Project</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .final-text,
+      .todo-input-grid {
+        display: grid;
+        grid-template-columns: 200px 150px 100px;
+        column-gap: 10px;
+        row-gap: 10px;
+      }
+      .todo-input-grid {
+        margin-bottom: 10px;
+      }
+      .input-text, .input-text-date, .input-text-btn{
+        padding: 10px;
+
+      }
+      .input-text-btn, .delete-btn{
+        padding: 10px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+
+      }
+      .input-text-btn{
+        background-color: red;
+        
+      }
+      .delete-btn{
+        background-color: green;
+      }
+    
+
+    </style>
+  </head>
+  <body>
+    <p>ToDo List :</p>
+    <div class="todo-input-grid">
+      <input
+        placeholder="Todo name"
+        class="js-input-text input-text"
+        onkeydown="enterKey(event)" 
+      />
+      <input type="date" onclick="" class="date-input input-text-date" />
+      <button onclick="todoList()" class="input-text-btn">Add</button>
+    </div>
+    <div class="js-todo-list final-text"></div>
+
+    <script>
+      const myOutput = [
+        
+      ];
+
+      todoFinal();
+
+      function todoFinal() {
+        let todoListInputs = "";
+
+        for (let i = 0; i < myOutput.length; i++) {
+          const todoObject = myOutput[i];
+          //const name = todoObject.name;
+          const { name, dueDate } = todoObject;
+          // const dueDate = todoObject.dueDate;
+          const html = `<div>${name}</div>
+           <div>${dueDate}</div> 
+           <button onclick= "
+           myOutput.splice(${i}, 1);
+           todoFinal();
+           " class="delete-btn">Delete</button>
+          `;
+          todoListInputs = todoListInputs + html;
+
+          // console.log(todoListInputs);
+        }
+        document.querySelector(".js-todo-list").innerHTML = todoListInputs;
+      }
+
+      function todoList() {
+        const inputElement = document.querySelector(".js-input-text");
+
+        const name = inputElement.value;
+
+        const dueDateInputElement = document.querySelector(".date-input");
+        const dueDate = dueDateInputElement.value;
+
+        // if (myOutput.length === 0) {
+        //   document.querySelector(".js-todo-list").innerHTML =
+        //     `<p>No todos yet..!</p>`;
+        //   return;
+        // }
+
+        // if(inputElement === 0){
+        //   alert('Please fill the input texts');
+        //   return;
+
+        // }
+
+        myOutput.push({
+          // name: name,
+          //   dueDate: dueDate
+          name,
+          dueDate,
+        });
+        // console.log(myOutput);
+
+        inputElement.value = "";
+        dueDateInputElement.value = '';
+
+        todoFinal();
+      }
+
+      function enterKey(event) {
+        if (event.key === "Enter") {
+          todoList();
+        }
+      }
+    </script>
+  </body>
+</html>

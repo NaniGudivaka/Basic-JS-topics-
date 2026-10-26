@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button class="js-cart-quantity"
+      onclick="
+      cartQuantity1();
+         
+        // console.log(`cart quantity is : ${cartQuantity}`);
+      "
+    >
+      cart quantity
+    </button>
+
+    <button onclick="
+    cartQuantity();
+    cartQuantity ++;
+    console.log(`cart quantity is : ${cartQuantity}`);
+    ">+1</button>
+
+    <button onclick="
+    
+    cartQuantity +=
+     2;
+    console.log(`cart quantity is : ${cartQuantity}`);
+    ">+2</button>
+
+    <button onclick="
+    cartQuantity = cartQuantity -= 1;
+    console.log(`cart quantity is: ${cartQuantity}`);
+    ">-1</button>
+
+    <button 
+    onclick="
+    
+    cartQuantity = cartQuantity -+2;
+    console.log(`cart quantity is : ${cartQuantity}`);
+    ">-2</button>
+
+    <button onclick="
+    cartQuantity  = 0;
+    console.log('cart quantity updated :');
+    console.log(`cart quantity is : ${cartQuantity}`);
+    ">Reset cart</button>
+    <p class="js-final-result"></p>
+  </body>
+  <script>
+
+    let cartQuantity = 0;
+
+    function cartQuantity1(){
+      const quantity = document.querySelector('.js-cart-quantity');
+      document.querySelector('.js-final-result').innerHTML = `cart quantity is : ${cartQuantity}`;
+
+    }
+
+
+  </script>
+</html>
